@@ -1,1 +1,1 @@
-자바스크립트 React & Node.js 스터디 레포지토리 입니다.
+Repositoy for studying React and Node.js
