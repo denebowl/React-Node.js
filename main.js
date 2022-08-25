@@ -1,1 +1,10 @@
-console.log('test');
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.end(`hello!`);
+});
+
+const port = 4000;
+server.listen(port, () => {
+  console.log('listring at port : %d', port);
+});
