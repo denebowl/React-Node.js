@@ -9,8 +9,6 @@
 //   console.log('listring at port : %d', port);
 // });
 
-const { resourceLimits } = require('worker_threads');
-
 //2. HighOrderFunction (Closure)
 // //and -> highOrderFunction 다른 함수를 내놓는 함수.
 // function and(/**@type {string}*/ x) {
@@ -50,31 +48,26 @@ const { resourceLimits } = require('worker_threads');
 // console.log(counterB.total);
 
 // 4. Closure 한번 더
+// function getFactoryHandle() {
+//   let handle = { numCounters: 0, initCounter: getCounter };
+//   function getCounter() {
+//     handle.numCounters++;
 
-function getCounterManager() {
-  var resultFinal = { numCounters: 0, newCounter: newCounter };
+//     let counter = { total: 0, increase: increase };
+//     function increase() {
+//       counter.total++;
+//     }
+//     return counter;
+//   }
+//   return handle;
+// }
 
-  function newCounter() {
-    resultFinal.numCounters++;
+// const factoryHandle = getFactoryHandle();
+// const counterA = factoryHandle.initCounter();
+// counterA.increase();
+// counterA.increase();
 
-    console.log('뉴카운터' + resultFinal.numCounters);
+// const counterB = factoryHandle.initCounter();
+// counterB.increase();
 
-    var result = { increse: increse, total: 0 };
-    function increse() {
-      result.total++;
-    }
-    return result;
-  }
-
-  return resultFinal;
-}
-
-var manager = getCounterManager();
-var counterA = manager.newCounter();
-counterA.increse();
-counterA.increse();
-
-var counterB = manager.newCounter();
-counterB.increse();
-
-console.log(counterA.total, counterB.total);
+// console.log(counterA.total, counterB.total, factoryHandle.numCounters);
